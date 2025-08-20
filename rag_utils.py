@@ -1,15 +1,19 @@
 from langchain_core.prompts import PromptTemplate
 from langchain.chains import LLMChain
-from langchain_huggingface import HuggingFaceEndpoint
+from langchain_huggingface import ChatHuggingFace,HuggingFaceEndpoint
 import streamlit as st
 
 hf_token = st.secrets["api_keys"]["huggingface"]
+
 llm = HuggingFaceEndpoint(
-    repo_id="meta-llama/Meta-Llama-3-8B-Instruct", 
+    repo_id="meta-llama/Meta-Llama-3-8B-Instruct",
+    task="conversational",
     huggingfacehub_api_token=hf_token,
-    temperature=0.6,
+    temperature=0.3,
     max_new_tokens=512
 )
+
+chat_llm = ChatHuggingFace(llm=llm)
 
 template = """
 You are an academic assistant summarizing research papers. 
