@@ -3,28 +3,26 @@ from rag_utils import answer_query
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
-# ------------------- Load Vectorstore ------------------- #
+st.set_page_config(page_title="RAG Chatbot", page_icon="🤖")
+
+st.title("📚 RAG Chatbot")
+
+# Load or initialize vectorstore
 @st.cache_resource
 def load_vectorstore():
-    embedding_model = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-mpnet-base-v2"
+    embeddings = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
-    return FAISS.load_local(
-        "faiss_index",
-        embedding_model,
-        allow_dangerous_deserialization=True
-    )
+    vectorstore = FAISS.load_local("faiss_index", embeddings)
+    return vectorstore
 
 vectorstore = load_vectorstore()
 
-# ------------------- UI ------------------- #
-st.title("RAG Chatbot on Computational Media Analysis")
-st.subheader(
-    "Ask questions regarding computational framing, fake news, propaganda detection, etc."
-)
+# Debug mode toggle
+debug_mode = st.checkbox("Debug Mode", value=False)
 
-query = st.text_input("Enter question:")
-debug_mode = st.checkbox("Debug mode", value=False)
+# User input
+query = st.text_input("Enter your question:")
 
 if query:
     with st.spinner("Searching..."):
