@@ -8,7 +8,7 @@ llm = HuggingFaceEndpoint(
     repo_id="google/flan-t5-large", 
     huggingfacehub_api_token=hf_token,
     temperature=0.3,
-    max_length=512
+    max_new_tokens=512
 )
 
 template = """
