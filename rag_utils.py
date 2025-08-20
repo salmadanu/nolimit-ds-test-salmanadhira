@@ -5,7 +5,7 @@ import streamlit as st
 
 hf_token = st.secrets["api_keys"]["huggingface"]
 llm = HuggingFaceEndpoint(
-    repo_id="google/flan-t5-large", 
+    repo_id="google/flan-t5-base", 
     huggingfacehub_api_token=hf_token,
     temperature=0.3,
     max_new_tokens=512
