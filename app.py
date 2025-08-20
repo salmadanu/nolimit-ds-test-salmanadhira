@@ -1,5 +1,4 @@
 import streamlit as st
-import pickle
 from rag_utils import answer_query
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -15,19 +14,20 @@ def load_vectorstore():
         embedding_model,
         allow_dangerous_deserialization=True
     )
+
 vectorstore = load_vectorstore()
 
 # ------------------- UI ------------------- #
-st.write("Type of vectorstore:", type(vectorstore))
 st.title("RAG Chatbot on Computational Media Analysis")
-st.subheader("Ask questions regarding computational framing, fake news, propaganda detection, etc. using computational methods")
+st.subheader(
+    "Ask questions regarding computational framing, fake news, propaganda detection, etc."
+)
 
 query = st.text_input("Enter question:")
+debug_mode = st.checkbox("Debug mode", value=False)
+
 if query:
     with st.spinner("Searching..."):
-        answer = answer_query(vectorstore, query)
+        answer = answer_query(vectorstore, query, debug=debug_mode)
     st.markdown("### 💬 Answer")
     st.write(answer)
-
-
- 
