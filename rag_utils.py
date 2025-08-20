@@ -1,41 +1,14 @@
-from langchain_core.prompts import PromptTemplate
-from langchain.chains import LLMChain
-from langchain.schema import HumanMessage
-from langchain_huggingface import ChatHuggingFace,HuggingFaceEndpoint
 import streamlit as st
+from langchain.chains import RetrievalQA
+from langchain.text_splitter import CharacterTextSplitter
+from langchain_huggingface import HuggingFaceEndpoint
 
 hf_token = st.secrets["api_keys"]["huggingface"]
 
-llm = HuggingFaceEndpoint(
-    repo_id="meta-llama/Meta-Llama-3-8B-Instruct",
-    task="conversational",
-    huggingfacehub_api_token=hf_token,
-    temperature=0.3,
-    max_new_tokens=512
-)
-
-chat_llm = ChatHuggingFace(llm=llm)
-
-template = """
-You are an academic assistant summarizing research papers. 
-Answer the QUESTION clearly using the CONTEXT.
-- Write in complete, well-formed sentences (fix broken or fragmented text).
-- If methods or models are mentioned, list and EXPLAIN their purpose. 
-- Cite authors or papers if available in the context.
-- If the answer is not in the context, reply: "The context does not provide enough information."
-
-CONTEXT:
-{context}
-
-QUESTION: {question}
-
-ANSWER:
-"""
-prompt = PromptTemplate(template=template, input_variables=["context", "question"])
-
-def answer_query(query:str, vectorstore, k=5):
-    results = vectorstore.similarity_search(query, k=k)
-    context = "\n\n".join([doc.page_content for doc in results])
-    filled_prompt = prompt.format(context=context, question=query)
-    answer = llm.invoke(filled_prompt)
-    return answer.strip()[0].upper() + answer.strip()[1:]
+def answer_query(vectorstore, query):
+    llm = HuggingFaceEndpoint(repo_id ="meta-llama/Meta-Llama-3-8B-Instruct", 
+                               huggingfacehub_api_token=hf_token, 
+                              temperature= 0.6)
+    qa = RetrievalQA.from_chain_type(llm=llm, retriever=vectorstore.as_retriever())
+    answer = qa({"query": query})
+    return answer
