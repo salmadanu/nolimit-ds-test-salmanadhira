@@ -13,7 +13,9 @@ def load_vectorstore():
     embeddings = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
-    vectorstore = FAISS.load_local("faiss_index", embeddings)
+    vectorstore = FAISS.load_local("faiss_index", 
+                                   embeddings,
+                                   allow_dangerous_deserialization=True)
     return vectorstore
 
 vectorstore = load_vectorstore()
