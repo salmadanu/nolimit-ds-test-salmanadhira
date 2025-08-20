@@ -18,6 +18,7 @@ def load_vectorstore():
 vectorstore = load_vectorstore()
 
 # ------------------- UI ------------------- #
+st.write("Type of vectorstore:", type(vectorstore))
 st.title("RAG Chatbot on Computational Media Analysis")
 st.subheader("Ask questions regarding computational framing, fake news, propaganda detection, etc. using computational methods")
 
@@ -27,5 +28,6 @@ if query:
         answer = answer_query(vectorstore, query)
     st.markdown("### 💬 Answer")
     st.write(answer)
+
 
  
