@@ -5,7 +5,7 @@ from rag_utils import answer_query
 # ------------------- Load Vectorstore ------------------- #
 @st.cache_resource
 def load_vectorstore():
-    with open("vectorstore/faiss_store.pkl", "rb") as f:
+    with open("vectorstore/index.pkl", "rb") as f:
         return pickle.load(f)
 
 vectorstore = load_vectorstore()
@@ -17,9 +17,10 @@ st.subheader("Ask questions regarding computational framing, fake news, propagan
 query = st.text_input("Enter question:")
 if query:
     with st.spinner("Searching..."):
-        answer, sources = answer_query(query, vectorstore)
-    st.badge("Answer", icon="💬", color="green")
+        answer = answer_query(query, vectorstore)
+    st.markdown("### 💬 Answer")
     st.write(answer)
+
 
     # st.badge("Source", icon="🔍", color="blue")
     # for s in sources:
