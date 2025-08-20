@@ -8,11 +8,9 @@ hf_token = st.secrets["api_keys"]["huggingface"]
 def answer_query(vectorstore, query, debug=False):
     llm = HuggingFaceEndpoint(
     endpoint_url="https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct",
-    model_kwargs={
-        "temperature": 0.3,
-        "max_new_tokens": 512
-    },
-    huggingfacehub_api_token=st.secrets["api_keys"]["huggingface"]
+    huggingfacehub_api_token=hf_token,
+    temperature=0.3,
+    max_new_tokens=512
     )
 
 
