@@ -15,6 +15,7 @@ def load_vectorstore():
         embedding_model,
         allow_dangerous_deserialization=True
     )
+vectorstore = load_vectorstore()
 
 # ------------------- UI ------------------- #
 st.title("RAG Chatbot on Computational Media Analysis")
