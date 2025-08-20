@@ -1,6 +1,6 @@
 pandas
 numpy
-PyPDF2
+pymupdf
 streamlit
 langchain
 langchain-huggingface
