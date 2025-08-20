@@ -1,17 +1,20 @@
 import streamlit as st
 from langchain.chains import RetrievalQA
-from langchain_community.chat_models import ChatHuggingFaceEndpoint
+from langchain_community.llms import HuggingFaceEndpoint
 
 
 hf_token = st.secrets["api_keys"]["huggingface"]
 
 def answer_query(vectorstore, query, debug=False):
-    llm = ChatHuggingFaceEndpoint(
-        repo_id="meta-llama/Meta-Llama-3-8B-Instruct",
-        huggingfacehub_api_token=hf_token,
-        temperature=0.3,
-        max_new_tokens=512
+    llm = HuggingFaceEndpoint(
+    endpoint_url="https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct",
+    model_kwargs={
+        "temperature": 0.3,
+        "max_new_tokens": 512
+    },
+    huggingfacehub_api_token=st.secrets["api_keys"]["huggingface"]
     )
+
 
     qa = RetrievalQA.from_chain_type(
         llm=llm,
