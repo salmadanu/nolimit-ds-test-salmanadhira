@@ -1,5 +1,6 @@
 from langchain_core.prompts import PromptTemplate
 from langchain.chains import LLMChain
+from langchain.schema import HumanMessage
 from langchain_huggingface import ChatHuggingFace,HuggingFaceEndpoint
 import streamlit as st
 

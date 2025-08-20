@@ -24,13 +24,8 @@ st.subheader("Ask questions regarding computational framing, fake news, propagan
 query = st.text_input("Enter question:")
 if query:
     with st.spinner("Searching..."):
-        answer = answer_query(query, vectorstore)
+        answer = answer_query(vectorstore, query)
     st.markdown("### 💬 Answer")
     st.write(answer)
-
-
-    # st.badge("Source", icon="🔍", color="blue")
-    # for s in sources:
-    #     st.markdown(f"- {s.metadata.get('source', 'Unknown')}")
 
  
