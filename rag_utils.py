@@ -27,5 +27,5 @@ def answer_query(vectorstore, query, debug=False):
         for i, doc in enumerate(docs[:3]):
             st.write(f"Doc {i+1}:", doc.page_content[:300], "...")  # show first 300 chars
 
-    answer = qa({"query": query})
+    answer = qa.run({"query": query})
     return answer
