@@ -1,6 +1,7 @@
 import streamlit as st
 from langchain.chains import RetrievalQA
-from langchain.chat_models import ChatHuggingFaceEndpoint
+from langchain_community.chat_models import ChatHuggingFaceEndpoint
+
 
 hf_token = st.secrets["api_keys"]["huggingface"]
 
