@@ -3,7 +3,7 @@
 
 ### Q&A Chatbot untuk menjawab pertanyaan seputar *computational media analysis*
 
-Dataset merupakan 30 *file* dalam format **PDF** (60,5 MB) yang dikumpulin sendiri secara manual berupa jurnal, buku, dan artikel dalam Bahasa Inggris seputar analisis media secara komputasional seperti analisis *framing*, deteksi berita palsu, dan deteksi propaganda menggunakan metode komputasional seperti *deep learning* dan pemodelan topik.
+Dataset merupakan 30 *file* dalam format **PDF** (60,5 MB) yang dikumpulkan mandiri secara manual berupa jurnal, buku, dan artikel dalam Bahasa Inggris seputar analisis media secara komputasional seperti analisis *framing*, deteksi berita palsu, dan deteksi propaganda menggunakan metode komputasional seperti *deep learning* dan pemodelan topik.
 
 
 
