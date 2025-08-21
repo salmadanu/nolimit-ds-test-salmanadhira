@@ -30,8 +30,9 @@ Tuning pada beberapa parameter dan model dilakukan untuk menemukan embedding par
 
 
 
-## 📙 Menjalankan dengan Google Colab
-Colab dapat diakses melal
+## 📙 Menjalankan dengan [Google Colab](https://colab.research.google.com/drive/1EsHIbeDpwCz_GL9gZOdVpnw9S5NC809c?usp=sharing)
+
+
 ## 🔄 Deployment dengan Streamlit Cloud
 ## 🔄 Deployment dengan HuggingFace Spaces
 ## 💡 Saran Perbaikan
