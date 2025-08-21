@@ -8,9 +8,9 @@ Dataset merupakan 30 *file* dalam format **PDF** (60,5 MB) berupa jurnal, buku, 
 
 
 ## Flowchart
-Nanti masukin flowchart disini
+![RAG Chatbot Flowchart](flowchart.png)
+Tuning pada beberapa parameter dan model dilakukan untuk menemukan embedding parameter yang menghasilkan jawaban terbaik, yang didokumentasikan melalui [log iterasi](https://docs.google.com/spreadsheets/d/1fvNhsdH15O83DG2wBWyW-Ziuv8HC-XclSvzU3IECP48/edit?usp=sharing).
 
-Sedikit tuning dilakukan untuk menemukan embedding parameter yang menghasilkan jawaban terbaik, yang didokumentasikan melalui log iterasi(link ke excel).
 ## ⚙️ Tech Stack
 
 **PDF Extraction & Preprocess:** 
