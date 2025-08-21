@@ -33,8 +33,8 @@ Terdapat input box pada bagian bawah notebook untuk memasukkan pertanyaan.
 
 ## 🔄 Deployment dengan [HuggingFace Spaces](https://huggingface.co/spaces/salmdanu/nolimit-ds-test-salmanadhirad) dan [Streamlit Cloud](https://nolimit-ds-test-salmanadhira.streamlit.app/)
 Deployment RAG pada HuggingFace Spaces dan Streamlit Cloud telah diusahakan, namun belum berhasil menjalankan chatbot dengan sempurna. Beberapa kendala yang dialami sebagai berikut:
-- Keterbatasan CPU sehingga model dengan daya komputasi besar (`flan-t5-large`) tidak dapat dijalankan dengan baik dan tidak di-support oleh Inference Providers
-- Terjadinya **AssertionError** yang disebabkan oleh perbedaan dimensi dengan embedding dan indeks FAISS (hal ini kemungkinan disebabkan oleh pembuatan FAISS yang dilakukan terpisah (di Colab, untuk memaksimalkan GPU) namun terjadi perubahan saat deployment)
+- ⚠️ Keterbatasan CPU sehingga model dengan daya komputasi besar (`flan-t5-large`) tidak dapat dijalankan dengan baik dan tidak di-support oleh Inference Providers
+- ⚠️ Terjadinya **AssertionError** yang disebabkan oleh perbedaan dimensi dengan embedding dan indeks FAISS (hal ini kemungkinan disebabkan oleh pembuatan FAISS yang dilakukan terpisah (di Colab, untuk memaksimalkan GPU) namun terjadi perubahan saat deployment)
   
 ## 💡 Saran Perbaikan
 - Praproses data yang lebih menyeluruh untuk menangani variasi format pada jurnal (terdapatnya header, footer, dsb.)
